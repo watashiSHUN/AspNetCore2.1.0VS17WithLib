@@ -38,6 +38,12 @@ namespace DotNetCore210
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            var str1 = CoreClassLib.Class1.returnStr();
+            var str2 = StandardClassLib.Class1.returnStr();
+            if (str1 != str2)
+            {
+                throw new InvalidOperationException("failed to load library");
+            }
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
